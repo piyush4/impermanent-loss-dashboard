@@ -17,19 +17,20 @@ function Home(props){
   })
     return (
     <React.Fragment>
-    
-      <table className="poolsTable">
-        <tbody>
-          <tr>
-            <th>Pool Id</th>
-            <th>Pool Name</th>
-            <th>Volume 24h</th>
-            <th>Liquidity 24h</th>
-            <th>IL 24h</th>
-          </tr>
-          {poolItems}
-        </tbody>
-      </table>
+      <div className="tableContainer" style={{overflowX:"auto"}}>
+        <table className="poolsTable">
+          <tbody>
+            <tr>
+              <th>Pool Id</th>
+              <th>Pool Name</th>
+              <th>Volume 24h</th>
+              <th>Liquidity 24h</th>
+              <th>IL 24h</th>
+            </tr>
+            {poolItems}
+          </tbody>
+        </table>
+      </div>
       <p className="TableDescription">
           IL 24h= Impermanent Loss in Pool in the  last 24 hours <br/>
       </p>

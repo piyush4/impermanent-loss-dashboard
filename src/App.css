@@ -44,6 +44,9 @@ h1{
   border-top:1px solid rgba(150, 150, 150, 0.3);
   font-size:1rem;
 }
+.tableContainer{
+  min-width: 665px;
+}
 .poolsTable{
   width:90%;
   border-spacing: 0;
