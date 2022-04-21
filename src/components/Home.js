@@ -20,7 +20,7 @@ function Home(props){
     
       <table className="poolsTable">
         <tbody>
-          <tr className="poolsTableCards">
+          <tr>
             <th>Pool Id</th>
             <th>Pool Name</th>
             <th>Volume 24h</th>
