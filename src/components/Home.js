@@ -1,7 +1,7 @@
 import React from "react"
 import Pool from "./Pool"
 import {useState} from 'react'
-
+import Loading from "./Loading"
 function Home(props){
   
     const {data, coinData, poolWeights} = props
@@ -29,7 +29,7 @@ function Home(props){
               <th>Liquidity 24h</th>
               <th>IL 24h</th>
             </tr>
-            {poolItems}
+            {poolItems.length>0? poolItems:<Loading/>}
           </tbody>
         </table>
       </div>

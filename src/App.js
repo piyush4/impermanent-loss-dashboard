@@ -15,7 +15,6 @@ function App() {
   const [totalPools, setTotalPools] = React.useState(0)
   
   React.useEffect(()=>{
-    
     // Get list of available pools
     fetch(poolDailyPriceUrl)
       .then(res => handleResponse(res, "Cannot get daily prices"))
@@ -26,7 +25,6 @@ function App() {
     fetch(totPoolsUrl,headers)
       .then(res => handleResponse(res, "Cannot get number of pools"))
       .then(data => setTotalPools(data.numPools)).catch(error=>console.log(error))
-    
     // Get coin prices over the last 24 hours
     fetch(tokenPricesUrl)
       .then(res=>handleResponse(res, "Cannot get token prices"))
