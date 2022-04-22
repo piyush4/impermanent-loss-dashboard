@@ -1,11 +1,13 @@
 import React from "react"
 import Pool from "./Pool"
-import {Link} from 'react-router-dom'
+import {useState} from 'react'
+
 function Home(props){
   
     const {data, coinData, poolWeights} = props
     const dataKeys = Object.keys(data)
-  
+    const [searchState, setSearchState] = useState('')
+
     const poolItems = dataKeys.map(key => {
     return(<Pool key = {key} 
                  poolId = {key}

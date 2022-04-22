@@ -30,10 +30,10 @@ export function getCurrencyPriceArray(token, poolPriceData){
     const nValues = poolPriceData.get(token).length
     const priceData = poolPriceData.get(token)
     const pastPrices = []
-    if(nValues>720){
-        pastPrices.push([priceData[nValues-24],
-                            priceData[nValues-168],
-                            priceData[nValues-720]])
+    if(nValues>30){
+        pastPrices.push([priceData[nValues-1],
+                            priceData[nValues-7],
+                            priceData[nValues-30]])
     }
     return pastPrices
 }

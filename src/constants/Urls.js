@@ -1,22 +1,26 @@
-export const poolDailyPriceUrl = "https://api-osmosis.imperator.co/pools/v2/all?low_liquidity=false"
+const corsUrl = "https://rocky-ocean-85592.herokuapp.com/"
+const poolDataApi = "http://osmosis.artifact-staking.io:1317"
 
-export const tokenPricesUrl = "https://api-osmosis.imperator.co/tokens/v2/all"
+const priceDataApi ="https://api-osmosis.imperator.co"
+export const poolDailyPriceUrl = priceDataApi+"/pools/v2/all?low_liquidity=false"
 
-export const totPoolsUrl = "https://lcd-osmosis.blockapsis.com/osmosis/gamm/v1beta1/num_pools"
+export const tokenPricesUrl = priceDataApi+"/tokens/v2/all"
+
+export const totPoolsUrl = corsUrl+poolDataApi+"/osmosis/gamm/v1beta1/num_pools"
 
 export function eachPoolPriceUrl(poolId){
-    return `https://api-osmosis.imperator.co/pools/v2/${poolId}`
+    return `${priceDataApi}/pools/v2/${poolId}`
 }
 export function tokenChart(token){
-    return `https://api-osmosis.imperator.co/tokens/v1/historical/${token}/chart?range=30d`
+    return `${priceDataApi}/tokens/v2/historical/${token}/chart?tf=1440`
 }
 
 export function poolParamsUrl(totPools){ 
-    return `https://lcd-osmosis.blockapsis.com/osmosis/gamm/v1beta1/pools?pagination.offset=0&pagination.limit=${totPools}`
+    return `${corsUrl}${poolDataApi}/osmosis/gamm/v1beta1/pools?pagination.offset=0&pagination.limit=${totPools}`
 }
 
 export function eachPoolParamsUrl(poolId){
-    return `https://lcd-osmosis.blockapsis.com/osmosis/gamm/v1beta1/pools/${poolId}`
+    return `${corsUrl}${poolDataApi}/osmosis/gamm/v1beta1/pools/${poolId}`
 }
 
 

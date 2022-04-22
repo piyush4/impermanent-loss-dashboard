@@ -7,6 +7,5 @@ export const upArrow = 0x2191
 export const downArrow = 0x2193
 
 export const headers = {
-    headers:{'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'},
-    referrer:'https://lcd-osmosis.blockapsis.com/swagger/'
+    'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
 }

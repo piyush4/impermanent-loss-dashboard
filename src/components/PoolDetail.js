@@ -15,7 +15,7 @@ function PoolDetail(){
     const [currentPrices, setCurrentPrices] = useState([])
     const periodMap = {"1D":0, "7D":1, "30D":2}
     let impermLoss = {"1D":0,"7D":0,"30D":0}
-    
+    // handle events
     function handleInput(e){
         e.preventDefault()
         setAmountInvested(e.target.value)   
@@ -26,7 +26,7 @@ function PoolDetail(){
     function handleClick(event){
         setCurrentPeriod(event.target.textContent)
     }
-    
+    //load the data required for the page render
     useEffect(()=>{
         fetch(eachPoolPriceUrl(poolId))
             .then(res=>handleResponse(res))
@@ -44,7 +44,6 @@ function PoolDetail(){
                     return  token.weight
         }))
     },[])  
-    
     useEffect(()=>{
         if(poolTokens.length>1){
             poolTokens.map(token=> fetch(tokenChart(token))
@@ -55,13 +54,13 @@ function PoolDetail(){
             )
         }
     },[poolTokens])
-    
+    // If the data is available calculate impermanent loss
     if(weights.length>1 && poolPriceData.size==poolTokens.length){
-        
         const decimalWeights = calculateWeights(weights)
         const pastTokensPrices = poolTokens.map(token => getCurrencyPriceArray(token, poolPriceData))
         if(pastTokensPrices.length>1){
             const returns = []
+            
             for(let i=0;i<pastTokensPrices[0][0].length;i++){
                 returns.push(pastTokensPrices.map((token,index) => currentPrices[index]/token[0][i]))
             }
@@ -80,7 +79,7 @@ function PoolDetail(){
             impermLoss = newImpermLoss
         } 
     }
-    
+    //JSX
     return(
     <div className="il-card"> 
         <h3>Impermanent Loss for {poolTokens.reduce((pool, token)=>pool+token+"-","").slice(0,-1)}</h3>

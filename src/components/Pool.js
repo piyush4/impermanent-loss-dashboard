@@ -45,8 +45,8 @@ function Pool(props){
                 .map(tokenInfo => tokenInfo.weight)
                 return weight[0]
         })))
-        volume_24h_change = poolData[0].volume_24h_change
-        liquidity_24h_change = poolData[0].liquidity_24h_change
+        volume_24h_change = parseFloat(poolData[0].volume_24h_change)
+        liquidity_24h_change = parseFloat(poolData[0].liquidity_24h_change)
         vol_color = volume_24h_change>0?greenCol:redCol
         liquidity_color = liquidity_24h_change>0?greenCol:redCol
     }
