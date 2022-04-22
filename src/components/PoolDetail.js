@@ -41,26 +41,31 @@ function PoolDetail(){
             .then(data=>
                 data.pool.poolAssets.map(token => {
                     setWeights(prevWeights=>[...prevWeights,token.weight])
-                    return  token.weight
+                    return token.weight
         }))
     },[])  
     useEffect(()=>{
         if(poolTokens.length>1){
             poolTokens.map(token=> fetch(tokenChart(token))
             .then(res=>handleResponse(res))
-            .then(data=> setPoolPriceData(new Map(poolPriceData.set(token, 
+            .then(data=>{
+                if(data.length<30){
+                    throw new Error("Not enough data")
+                }
+                return setPoolPriceData(new Map(poolPriceData.set(token, 
                 (data.map(tokenPriceInfo =>tokenPriceInfo.close))
-            )))).catch(error => console.log(error))
-            )
+                )))
+            }).catch(error => console.log(error)))
         }
     },[poolTokens])
     // If the data is available calculate impermanent loss
     if(weights.length>1 && poolPriceData.size==poolTokens.length){
         const decimalWeights = calculateWeights(weights)
-        const pastTokensPrices = poolTokens.map(token => getCurrencyPriceArray(token, poolPriceData))
+        const pastTokensPrices = poolTokens
+        .map(token => getCurrencyPriceArray(token, poolPriceData))
         if(pastTokensPrices.length>1){
             const returns = []
-            
+
             for(let i=0;i<pastTokensPrices[0][0].length;i++){
                 returns.push(pastTokensPrices.map((token,index) => currentPrices[index]/token[0][i]))
             }
