@@ -25,7 +25,7 @@ function Pool(props){
     const poolName = poolData.reduce((poolName, item)=> poolName+item.symbol+"/","").slice(0,-1)
     const presentInSearchState = poolName.toUpperCase().includes(searchState)
     allNamesPresent = allNamesPresent && presentInSearchState
-    
+
     // filter out the pools that don't have the coin symbols in the API results
     const coinsInPool = poolData
             .filter(coinDetails=>coinDetails.symbol!=='')
@@ -65,8 +65,8 @@ function Pool(props){
         <React.Fragment>
         
         <tr className="poolsTableCards">
-            <td><Link key={poolId} to={poolId}>{poolId}</Link></td>
-            <td><Link key={poolId} to={poolId}>{poolName}</Link></td>
+            <td className="sticky-col first-col"><Link key={poolId} to={poolId}>{poolId}</Link></td>
+            <td className="sticky-col second-col"><Link key={poolId} to={poolId}>{poolName}</Link></td>
             <td style={{color:vol_color}}>{`${String.fromCharCode(volume_24h_change>0?upArrow:downArrow)} ${volume_24h_change.toFixed(2)}`}%</td>
             <td style={{color:liquidity_color}}>{`${String.fromCharCode(liquidity_24h_change>0?upArrow:downArrow)} ${liquidity_24h_change.toFixed(2)}`}%</td>
             <td>{(impermanentLoss1D*100).toFixed(3)}%</td>   

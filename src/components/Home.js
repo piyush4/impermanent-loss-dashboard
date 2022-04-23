@@ -28,20 +28,21 @@ function Home(props){
       <SearchMenuBar searchState={searchState}
                     handleChange ={handleChange}/>
       
-      <div className="tableContainer" style={{overflowX:"auto"}}>
-        {poolItems.length==0?<Loading/>:(<table className="poolsTable">
-          <tbody>
-            <tr>
-              <th>Pool Id</th>
+        <div className="tableContainer">
+          {poolItems.length==0?<Loading/>:(<table className="poolsTable">
+          
+            <thead>
+              <th>#</th>
               <th>Pool Name</th>
               <th>Volume 24h</th>
               <th>Liquidity 24h</th>
               <th>IL 24h</th>
-            </tr>
-            {poolItems}
-          </tbody>
-        </table>)}
-      </div>
+            </thead>
+            <tbody>
+              {poolItems}
+            </tbody>
+          </table>)}
+        </div>
       <p className="TableDescription">
           IL 24h= Impermanent Loss in Pool in the  last 24 hours <br/>
       </p>

@@ -9,6 +9,7 @@ import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import { handleResponse } from './helpers/Helpers';
 import { headers } from './constants/Constants';
+
 function App() {
   const [data, setdata] = React.useState([])
   const [coinData, setCoinData] = React.useState(new Map())
