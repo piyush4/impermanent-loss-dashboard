@@ -2,6 +2,7 @@ import Header from './components/Header'
 import Home from './components/Home'
 import PoolDetail from './components/PoolDetail';
 import Footer from './components/Footer';
+import Configuration from './components/Configuration';
 import { poolDailyPriceUrl, totPoolsUrl, poolParamsUrl, tokenPricesUrl } from './constants/Urls';
 import './App.css';
 import React from 'react'
@@ -63,6 +64,8 @@ function App() {
         poolWeights = {poolWeights}/>}/>
         <Route path="/:poolId" 
         element={<PoolDetail/>}/>
+        <Route path="/configuration"
+        element={<Configuration/>}/>
       </Routes>
       <Footer/>
     </React.Fragment>

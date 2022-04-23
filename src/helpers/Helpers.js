@@ -13,7 +13,6 @@ export function calculateWeights(weights){
     return decimalWeights
 }
 
-
 export function calculatePoolValue(periodReturns, decimalWeights){
     return (periodReturns
     .map((tokenReturn, index) => Math.pow(tokenReturn,decimalWeights[index]))
@@ -30,10 +29,10 @@ export function getCurrencyPriceArray(token, poolPriceData){
     const nValues = poolPriceData.get(token).length
     const priceData = poolPriceData.get(token)
     const pastPrices = []
-    if(nValues>30){
-        pastPrices.push([priceData[nValues-1],
-                            priceData[nValues-7],
-                            priceData[nValues-30]])
+    if(nValues>31){
+        pastPrices.push([priceData[nValues-2],
+                            priceData[nValues-8],
+                            priceData[nValues-31]])
     }
     return pastPrices
 }

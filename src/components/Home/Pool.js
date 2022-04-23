@@ -1,12 +1,11 @@
 import React from "react"
-import '../App.css'
-import {greenCol, redCol, upArrow, downArrow} from '../constants/Constants.js'
+import '../../App.css'
+import {greenCol, redCol, upArrow, downArrow} from '../../constants/Constants.js'
 import {Link} from 'react-router-dom'
-import bigInt from "big-integer"
-import { calculateHoldValue, calculatePoolValue, calculateWeights } from "../helpers/Helpers"
+import { calculateHoldValue, calculatePoolValue, calculateWeights } from "../../helpers/Helpers"
 
 function Pool(props){
-    const {poolId, poolData, coinData, poolWeights} = props
+    const {poolId, poolData, coinData, poolWeights,searchState} = props
     const currencies_price_change= []
     const currencies_price = []
     const weights = []
@@ -20,9 +19,12 @@ function Pool(props){
     let newHoldValue = 0
     
     // check whether all the tokens in the pool have their names in the API
-    const allNamesPresent = poolData.reduce((present, item)=> item.symbol!=="" && present, true)
+    let allNamesPresent = poolData.reduce((present, item)=> item.symbol!=="" && present, true)
+
     // construct Pool name
     const poolName = poolData.reduce((poolName, item)=> poolName+item.symbol+"/","").slice(0,-1)
+    const presentInSearchState = poolName.toUpperCase().includes(searchState)
+    allNamesPresent = allNamesPresent && presentInSearchState
     
     // filter out the pools that don't have the coin symbols in the API results
     const coinsInPool = poolData

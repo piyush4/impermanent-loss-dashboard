@@ -1,12 +1,17 @@
 import React from "react"
-import Pool from "./Pool"
+import Pool from "./Home/Pool"
 import {useState} from 'react'
 import Loading from "./Loading"
+import SearchMenuBar from "./Home/SearchMenuBar"
 function Home(props){
   
     const {data, coinData, poolWeights} = props
     const dataKeys = Object.keys(data)
     const [searchState, setSearchState] = useState('')
+
+    function handleChange(event){
+      setSearchState(event.target.value)
+    }
 
     const poolItems = dataKeys.map(key => {
     return(<Pool key = {key} 
@@ -14,13 +19,17 @@ function Home(props){
                  poolData = {data[key]}
                  coinData = {coinData}
                  poolWeights = {poolWeights.get(key)}
+                 searchState = {searchState.toUpperCase()}
              />
             )
   })
     return (
-    <React.Fragment>
+    <div className="home">
+      <SearchMenuBar searchState={searchState}
+                    handleChange ={handleChange}/>
+      
       <div className="tableContainer" style={{overflowX:"auto"}}>
-        <table className="poolsTable">
+        {poolItems.length==0?<Loading/>:(<table className="poolsTable">
           <tbody>
             <tr>
               <th>Pool Id</th>
@@ -29,13 +38,13 @@ function Home(props){
               <th>Liquidity 24h</th>
               <th>IL 24h</th>
             </tr>
-            {poolItems.length>0? poolItems:<Loading/>}
+            {poolItems}
           </tbody>
-        </table>
+        </table>)}
       </div>
       <p className="TableDescription">
           IL 24h= Impermanent Loss in Pool in the  last 24 hours <br/>
       </p>
-    </React.Fragment>)
+    </div>)
 }
 export default Home

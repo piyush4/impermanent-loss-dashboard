@@ -17,8 +17,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-
+*{
+  margin:0;
+  box-sizing: border-box;
+}
 body{
   background-color: rgba(23, 15, 52);
   color:rgba(255,255,255,0.9);
@@ -36,17 +38,89 @@ hr{
   font-weight: bold;
 }
 h1{
+  text-align: left;
+  font-size:1.8em;
+  font-weight: 600;
+}
+h3 {
   text-align: center;
-  margin:1em auto 2em;
+  margin: 1.5em;
+}
+input {
+  text-align: right;
+  width: 80%;
+  margin: 0.5em auto 1em;
+  padding: 0.5em 0.5em;
+  font-size: 2em;
+  border: none;
+  border-radius:0.3em;
+  background-color: rgba(255,255,255,0.2);
+  color: inherit;
+}
+input::placeholder {
+  text-align: right;
+  color:#FFFFFF66;
+}
+input:active, input:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+input:focus{
+  outline:none;
+}
+.menu{
+  list-style: none;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+.menu li{
+  padding:0.3em 1em;
+  margin:0 0em 0em 1em;
+  border-radius: 0.3em;
+}
+.menu li:hover{
+  background-color: rgba(255,255,255,0.2);
   
+  
+}
+.header{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  width:90%;
+  min-width:750px;
+  margin: 1em auto;
+
 }
 .heading{
   border-top:1px solid rgba(150, 150, 150, 0.3);
-  font-size:1rem;
+  font-size:1.5rem;
+}
+.home{
+  min-width: 750px;
 }
 .tableContainer{
   min-width: 665px;
 }
+.searchContainer{
+  width:90%;
+  min-width:665px;
+  margin:0 auto 1em;
+  
+}
+.searchHome{
+  width:40%;
+  margin:0.5em 0em 1em 60%;
+  text-align: left;
+  font-size:1.2em;
+  padding:0.5em 0.7em;
+  
+}
+.searchHome::placeholder{
+  text-align: left;
+}
+
 .poolsTable{
   width:90%;
   border-spacing: 0;
@@ -73,10 +147,7 @@ h1{
   width:90%;
   line-height: 1.5rem;
 }
-h3{
-  text-align: center;
-  margin:1.5em;
-}
+
 .il-card{
   margin:2em auto;
   width:90%;
@@ -99,22 +170,6 @@ h3{
   font-size: 1.2rem;
   text-align: right;
   color:rgba(255,255,255,0.2);
-}
-input{
-  text-align:right;
-  width:80%;
-  margin:0.5em auto 1em;
-  padding:0.5em 0.5em;
-  font-size: 2em;
-  border:none;
-  background-color: #FFFFFF66;
-  color:inherit;
-}
-input.placeholder{
-  text-align: center;
-}
-input:active, input:hover{
-  background-color: rgba(255, 255, 255, 0.151);
 }
 .periods{
   display:flex;
@@ -140,6 +195,10 @@ input:active, input:hover{
   background-color: rgba(255,255,255,0.2);
 }
 #isActive {
+  background-color: rgba(255, 255, 255, 0.151);
+  font-weight: bold;
+}
+.isActive {
   background-color: rgba(255, 255, 255, 0.151);
   font-weight: bold;
 }
