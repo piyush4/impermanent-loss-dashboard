@@ -13,14 +13,17 @@ function ImpermanentLossCard(props){
             className="amount" 
             type="text" 
             value={amountInvested}
-            onChange = {(e)=>handleInput(e)}
-            onSubmit = {(e)=>handleSubmit(e)}
+            onChange = {handleInput}
+            onSubmit = {handleSubmit}
             autoComplete="off"></input>
         </form>
         <div className="periods">
-            <p href="" onClick={(e)=>handleClick(e)} id={`${currentPeriod===`1D`?'isActive':''}`}>1D</p>
+            <p onClick={handleClick} id={`${currentPeriod===`1D`?'isActive':''}`}>1D</p>
             <p onClick={handleClick} id={`${currentPeriod===`7D`?'isActive':''}`}>7D</p>
-            <p onClick={handleClick} id={`${currentPeriod===`30D`?'isActive':''}`}>30D</p>
+            <p onClick={handleClick} id={`${currentPeriod===`1M`?'isActive':''}`}>1M</p>
+            <p onClick={handleClick} id={`${currentPeriod===`3M`?'isActive':''}`}>3M</p>
+            <p onClick={handleClick} id={`${currentPeriod===`6M`?'isActive':''}`}>6M</p>
+            <p onClick={handleClick} id={`${currentPeriod===`Max`?'isActive':''}`}>Max</p>
         </div>
         <div className="resultsContainer">            
             <p className="resultCategory">Pool Impermanent Loss: <span className="result">${(impermLoss[currentPeriod]*amountInvested*(-1)).toFixed(2)}</span></p>

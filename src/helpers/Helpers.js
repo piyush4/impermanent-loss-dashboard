@@ -29,10 +29,13 @@ export function getCurrencyPriceArray(token, poolPriceData){
     const nValues = poolPriceData.get(token).length
     const priceData = poolPriceData.get(token)
     const pastPrices = []
-    if(nValues>31){
+    if(nValues>2){
         pastPrices.push([priceData[nValues-2],
                             priceData[nValues-8],
-                            priceData[nValues-31]])
+                            priceData[nValues-31],
+                            priceData[nValues-91],
+                            priceData[nValues-181],
+                            priceData[0]])
     }
     return pastPrices
 }

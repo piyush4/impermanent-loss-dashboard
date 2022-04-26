@@ -15,12 +15,13 @@ function PoolDetail(){
     const [amountInvested, setAmountInvested] = useState(10000)
     const [currentPeriod, setCurrentPeriod] = useState("1D")
     const [currentPrices, setCurrentPrices] = useState([])
-    const periodMap = {"1D":0, "7D":1, "30D":2}
-    let impermLoss = {"1D":0,"7D":0,"30D":0}
+    const periodMap = {"1D":1, "7D":7, "1M":30, "3M":90, "6M":180, "Max":0}
+    let impermLoss = {"1D":0,"7D":0,"1M":0, "3M":0, "6M":0, "Max":0}
     
     // handle events
     function handleInput(e){
         e.preventDefault()
+        console.log(e.target.value)
         setAmountInvested(e.target.value)   
     }
     function handleSubmit(e){
@@ -51,7 +52,7 @@ function PoolDetail(){
             poolTokens.map(token=> fetch(tokenChart(token))
             .then(res=>handleResponse(res))
             .then(data=>{
-                if(data.length<30){
+                if(data.length<2){
                     throw new Error("Not enough data")
                 }
                 return setPoolPriceData(new Map(poolPriceData.set(token, 
@@ -78,7 +79,7 @@ function PoolDetail(){
                 newHoldValue.push(calculateHoldValue(returns[i], decimalWeights))
             }
             let newImpermLoss = {}
-            for(let i=0;i<3;i++){
+            for(let i=0;i<Object.keys(impermLoss).length;i++){
                 newImpermLoss[Object.keys(impermLoss)[i]] = (newPoolValue[i].toFixed(5)-newHoldValue[i].toFixed(5))
             }
             impermLoss = newImpermLoss

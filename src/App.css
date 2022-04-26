@@ -170,19 +170,22 @@ input:focus{
 }
 .periods{
   display:flex;
+  flex-wrap: wrap;
   width:100%;
   justify-content: space-between;
   margin:0 auto;
 }
 .periods p{
+  width:30%;
+  text-align: center;
   background-color: #FFFFFF66;
-  padding:0.2em 1.5em;
-  margin:0.5em 0.5em 0.5em 0;
+  padding:0.25em 1em;
+  margin:0.5em 0;
   border-radius: 0.2em;
-  font-size:1.2rem;
+  size:1.1rem;
 }
 .periods p:last-of-type{
-  margin:0.5em 0;
+  margin: 0.5em 0;
 }
 .resultsContainer{
   width:100%;
