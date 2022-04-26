@@ -21,6 +21,7 @@
   margin:0;
   box-sizing: border-box;
 }
+/*Generic elements*/
 body{
   background-color: rgba(23, 15, 52);
   color:rgba(255,255,255,0.9);
@@ -50,7 +51,7 @@ h3 {
 input {
   text-align: right;
   width: 100%;
-  margin: 0.5em auto 1em;
+  margin: 0.5em 0 1em;
   padding: 0.5em 0.5em;
   font-size: 2em;
   border: none;
@@ -68,6 +69,7 @@ input:active, input:hover {
 input:focus{
   outline:none;
 }
+/*Header and Menu*/
 .menu{
   list-style: none;
   display:flex;
@@ -79,7 +81,7 @@ input:focus{
 }
 .menu li{
   padding:0.3em 1em;
-  margin-right:1em;
+  margin-right:0.8em;
   border-radius: 0.3em;
 }
 .menu li:hover{
@@ -97,12 +99,13 @@ input:focus{
   border-top:1px solid rgba(150, 150, 150, 0.3);
   font-size:1.5rem;
 }
+/*Home page search bar*/
 .searchContainer{
   width:90%;
   margin:0 auto 1em;
 }
 .searchHome{
-  width:50%;
+  width:65%;
   margin:1em 0em;
   text-align: left;
   font-size:1.1rem;
@@ -112,6 +115,7 @@ input:focus{
 .searchHome::placeholder{
   text-align: left;
 }
+/*Table*/
 .tableContainer{
   width:90%;
   margin:0 auto;
@@ -140,15 +144,15 @@ input:focus{
   width:90%;
   line-height: 1.5rem;
 }
-
+/*Impermanent loss card*/
 .il-card{
-  margin:2em auto;
+  margin:3em auto;
   width:90%;
-  max-width:500px;
+  max-width:420px;
   border:2px solid rgba(255, 255, 255, 0.151);
   border-radius: 1rem;
-  padding:2em 2em;
-  box-shadow: 2px 2px 1.6px rgba(255, 255, 255, 0.151);
+  padding:1em 1em;
+  box-shadow: 1px 1px 0.8px rgba(255, 255, 255, 0.151);
 }
 .il-card form{
   width:100%;
@@ -177,20 +181,27 @@ input:focus{
   border-radius: 0.2em;
   font-size:1.2rem;
 }
-.periods:last-child{
+.periods p:last-of-type{
   margin:0.5em 0;
 }
-.impermanent-loss{
+.resultsContainer{
   width:100%;
   margin:2em auto;
   text-align: right;
   font-weight:bold;
   font-size:1.1rem;
 }
+.resultCategory{
+  color:rgba(255,255,255,0.6);
+}
+.result{
+  color:rgba(255,255,255,0.9);
+}
 .periods p:hover{
   cursor: pointer;
   background-color: rgba(255,255,255,0.2);
 }
+/*Active mode*/
 #isActive {
   background-color: rgba(255, 255, 255, 0.151);
   font-weight: bold;
@@ -207,17 +218,19 @@ a:hover{
   
   color:rgba(255, 255, 255, 0.8);
 }
+/*Footer*/
 .footer{
   width:100%;
   text-align: center;
   margin:2em 0em 1em;
   font-size: 0.8rem;
 }
-
+/*Loading component*/
 .loading{
   text-align:center;
   color:rgba(255,255,255,0.2);
 }
+/*screen greater than 650px*/
 @media (min-width:650px){
   h1{
     display:block;
@@ -237,5 +250,9 @@ a:hover{
     width:40%;
     margin:1em 0em 1em 60%;
   }
-  
+  .il-card form,
+  .periods,
+  .resultsContainer{
+    width:90%;
+  }
 }

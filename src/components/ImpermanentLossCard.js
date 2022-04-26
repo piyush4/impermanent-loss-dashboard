@@ -22,8 +22,8 @@ function ImpermanentLossCard(props){
             <p onClick={handleClick} id={`${currentPeriod===`7D`?'isActive':''}`}>7D</p>
             <p onClick={handleClick} id={`${currentPeriod===`30D`?'isActive':''}`}>30D</p>
         </div>
-        <div className="impermanent-loss">            
-            <p>Pool Impermanent Loss: ${(impermLoss[currentPeriod]*amountInvested*(-1)).toFixed(2)}</p>
+        <div className="resultsContainer">            
+            <p className="resultCategory">Pool Impermanent Loss: <span className="result">${(impermLoss[currentPeriod]*amountInvested*(-1)).toFixed(2)}</span></p>
         </div>
     </div>
     )

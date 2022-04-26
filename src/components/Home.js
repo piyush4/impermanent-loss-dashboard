@@ -32,11 +32,13 @@ function Home(props){
           {poolItems.length==0?<Loading/>:(<table className="poolsTable">
           
             <thead>
-              <th>#</th>
-              <th>Pool Name</th>
-              <th>Volume 24h</th>
-              <th>Liquidity 24h</th>
-              <th>IL 24h</th>
+              <tr>
+                <th>#</th>
+                <th>Pool Name</th>
+                <th>Volume 24h</th>
+                <th>Liquidity 24h</th>
+                <th>IL 24h</th>
+              </tr>
             </thead>
             <tbody>
               {poolItems}

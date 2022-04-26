@@ -12,7 +12,7 @@ function Header(){
     return(
     <div className="header">
         <h1>
-        Osmosis Dashboard
+        <Link to='/'>Osmosis Dashboard</Link>
         </h1>
         <ul className="menu">
             <Link to='/'><li className={`${isActive==='/'?'isActive':''}`}>Overview</li></Link>

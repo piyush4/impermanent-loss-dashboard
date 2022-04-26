@@ -23,10 +23,6 @@ function App() {
       .then(data =>{
        setdata(data)
       }).catch(error=>console.log(error))
-    //Get total number of pools
-    fetch(totPoolsUrl,headers)
-      .then(res => handleResponse(res, "Cannot get number of pools"))
-      .then(data => setTotalPools(data.numPools)).catch(error=>console.log(error))
     // Get coin prices over the last 24 hours
     fetch(tokenPricesUrl)
       .then(res=>handleResponse(res, "Cannot get token prices"))
@@ -40,6 +36,10 @@ function App() {
             })))
           })
         }).catch(error=>console.log(error))
+    //Get total number of pools
+    fetch(totPoolsUrl,headers)
+      .then(res => handleResponse(res, "Cannot get number of pools"))
+      .then(data => setTotalPools(data.numPools)).catch(error=>console.log(error))
   },[])
   
   //Get Pool weights
