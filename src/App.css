@@ -21,6 +21,9 @@
   margin:0;
   box-sizing: border-box;
 }
+.site-container{
+  margin:0 auto;
+}
 /*Generic elements*/
 body{
   background-color: rgba(23, 15, 52);
@@ -189,15 +192,20 @@ input:focus{
 }
 .resultsContainer{
   width:100%;
-  margin:2em auto;
-  text-align: right;
+  margin:2em 0 2em 25%;
+  text-align: center;
   font-weight:bold;
   font-size:1.1rem;
 }
 .resultCategory{
+  padding:0.15em 0.3em;
+  margin-right:0.3em;
+  text-align: left;
   color:rgba(255,255,255,0.6);
 }
 .result{
+  padding:0.5em;
+  text-align: right;
   color:rgba(255,255,255,0.9);
 }
 .periods p:hover{

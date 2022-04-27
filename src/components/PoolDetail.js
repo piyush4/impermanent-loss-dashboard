@@ -15,10 +15,13 @@ function PoolDetail(){
     const [amountInvested, setAmountInvested] = useState(10000)
     const [currentPeriod, setCurrentPeriod] = useState("1D")
     const [currentPrices, setCurrentPrices] = useState([])
-    const periodMap = {"1D":1, "7D":7, "1M":30, "3M":90, "6M":180, "Max":0}
+    const periodMap = {"1D":0, "7D":1, "1M":2, "3M":3, "6M":4, "Max":5}
     let impermLoss = {"1D":0,"7D":0,"1M":0, "3M":0, "6M":0, "Max":0}
-    
-    // handle events
+    let decimalWeights = []
+    let pastTokensPrices = []
+    const newHoldValue = []
+    const newPoolValue = []
+    // Event handlers
     function handleInput(e){
         e.preventDefault()
         console.log(e.target.value)
@@ -62,17 +65,18 @@ function PoolDetail(){
         }
     },[poolTokens])
     // If the data is available calculate impermanent loss
+    
     if(weights.length>1 && poolPriceData.size==poolTokens.length){
-        const decimalWeights = calculateWeights(weights)
-        const pastTokensPrices = poolTokens
-        .map(token => getCurrencyPriceArray(token, poolPriceData))
+        decimalWeights = (calculateWeights(weights))
+        console.log(decimalWeights)
+        pastTokensPrices = (poolTokens
+                           .map(token => getCurrencyPriceArray(token, poolPriceData)))
+        console.log(pastTokensPrices)
         if(pastTokensPrices.length>1){
             const returns = []
             for(let i=0;i<pastTokensPrices[0][0].length;i++){
                 returns.push(pastTokensPrices.map((token,index) => currentPrices[index]/token[0][i]))
             }
-            const newHoldValue = []
-            const newPoolValue = []
             
             for(let i=0;i<returns.length;i++){
                 newPoolValue.push(calculatePoolValue(returns[i], decimalWeights))
@@ -82,6 +86,8 @@ function PoolDetail(){
             for(let i=0;i<Object.keys(impermLoss).length;i++){
                 newImpermLoss[Object.keys(impermLoss)[i]] = (newPoolValue[i].toFixed(5)-newHoldValue[i].toFixed(5))
             }
+            console.log(newHoldValue)
+            console.log(newPoolValue)
             impermLoss = newImpermLoss
         } 
     }
@@ -96,6 +102,10 @@ function PoolDetail(){
                     handleInput = {handleInput}
                     handleSubmit = {handleSubmit}
                     handleClick = {handleClick}
+                    poolValue = {newPoolValue}
+                    holdValue = {newHoldValue}
+                    periodMap = {periodMap}
+                    pastTokensPrices = {pastTokensPrices}
             />
         )
     }else{

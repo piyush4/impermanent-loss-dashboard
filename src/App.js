@@ -56,7 +56,7 @@ function App() {
   },[totalPools])
 
   return (
-    <React.Fragment>
+    <div className='site-container'>
       <Header/>
       <Routes>
         <Route exact path="/" 
@@ -69,7 +69,7 @@ function App() {
         element={<Configuration/>}/>
       </Routes>
       <Footer/>
-    </React.Fragment>
+    </div>
   );
 }
 //<Route path= "/:countryId" element={<CountryDetail/>}></Route>

@@ -39,3 +39,7 @@ export function getCurrencyPriceArray(token, poolPriceData){
     }
     return pastPrices
 }
+
+export function calcAmount(result, amountInvested){
+    return ((result*amountInvested).toFixed(2))
+}
