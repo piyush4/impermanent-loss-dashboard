@@ -28,24 +28,22 @@ function ImpermanentLossCard(props){
         <div className="periods">
             {periodParas}
         </div>
-        <div className="resultsContainer">
-            <table>
-                <tbody>
-                    <tr>
-                        <td className="resultCategory">Pool Value:</td>
-                        <td className="result">${calcAmount(poolValue[periodMap[currentPeriod]], amountInvested)}</td>
-                    </tr>
-                    <tr>
-                        <td className="resultCategory">Hold Value:</td>
-                        <td className="result">${calcAmount(holdValue[periodMap[currentPeriod]], amountInvested)}</td>
-                    </tr>
-                    <tr>
-                        <td className="resultCategory">Impermanent Loss:</td>
-                        <td className="result">${calcAmount(impermLoss[currentPeriod],amountInvested)*-1}</td>
-                    </tr>
-                </tbody>
-            </table>           
-        </div>
+        <table className="resultsContainer">
+            <tbody>
+                <tr>
+                    <td className="resultCategory">Pool Value:</td>
+                    <td className="result">${calcAmount(poolValue[periodMap[currentPeriod]], amountInvested)}</td>
+                </tr>
+                <tr>
+                    <td className="resultCategory">Hold Value:</td>
+                    <td className="result">${calcAmount(holdValue[periodMap[currentPeriod]], amountInvested)}</td>
+                </tr>
+                <tr>
+                    <td className="resultCategory">Impermanent Loss:</td>
+                    <td className="result">${calcAmount(impermLoss[currentPeriod],amountInvested)*-1}</td>
+                </tr>
+            </tbody>
+        </table>           
     </div>
     )
 }
