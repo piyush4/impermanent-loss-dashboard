@@ -1,5 +1,5 @@
 const corsUrl = "https://rocky-ocean-85592.herokuapp.com/"
-const poolDataApi = "http://osmosis.artifact-staking.io:1317"
+const poolDataApi = "https://lcd-osmosis.blockapsis.com"
 
 const priceDataApi ="https://api-osmosis.imperator.co"
 export const poolDailyPriceUrl = priceDataApi+"/pools/v2/all?low_liquidity=false"

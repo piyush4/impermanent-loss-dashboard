@@ -13,7 +13,7 @@ function ImpermanentLossCard(props){
     })
     return(
         <div className="il-card"> 
-        <h3>Impermanent Loss for {poolTokens.reduce((pool, token)=>pool+token+"-","").slice(0,-1)}</h3>
+        <h3>{poolTokens.reduce((pool, token)=>pool+token+"/","").slice(0,-1)}</h3>
         <form>
             <label htmlFor="amount">LP Amount (USD)</label>
             <input 

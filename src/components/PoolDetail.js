@@ -11,10 +11,12 @@ function PoolDetail(){
     const {poolId}= useParams()
     const [poolTokens, setPoolTokens] = useState([])
     const [poolPriceData, setPoolPriceData] = useState(new Map())
-    const [weights, setWeights] = useState([])
+    const [denomData, setDenomData] = useState(new Map())
+    const [weights, setWeights] = useState(new Map())
     const [amountInvested, setAmountInvested] = useState(10000)
     const [currentPeriod, setCurrentPeriod] = useState("1D")
     const [currentPrices, setCurrentPrices] = useState([])
+
     const periodMap = {"1D":0, "7D":1, "1M":2, "3M":3, "6M":4, "Max":5}
     let impermLoss = {"1D":0,"7D":0,"1M":0, "3M":0, "6M":0, "Max":0}
     let decimalWeights = []
@@ -41,14 +43,15 @@ function PoolDetail(){
                 data.map(token => {
                 setPoolTokens(prevPoolTokens =>[...prevPoolTokens, token.symbol]) 
                 setCurrentPrices(prevCurrentPrices =>[...prevCurrentPrices, token.price])
+                setDenomData(new Map(denomData.set(token.symbol, token.denom)))
         })})
         fetch(eachPoolParamsUrl(poolId),headers)
             .then(res=>handleResponse(res))
-            .then(data=>
+            .then(data=>{
                 data.pool.poolAssets.map(token => {
-                    setWeights(prevWeights=>[...prevWeights,token.weight])
+                    setWeights(new Map(weights.set(token.token.denom, token.weight)))
                     return token.weight
-        }))
+        })})
     },[])  
     useEffect(()=>{
         if(poolTokens.length>1){
@@ -65,9 +68,8 @@ function PoolDetail(){
         }
     },[poolTokens])
     // If the data is available calculate impermanent loss
-    
-    if(weights.length>1 && poolPriceData.size==poolTokens.length){
-        decimalWeights = (calculateWeights(weights))
+    if([...weights.keys()].length>1 && poolPriceData.size===poolTokens.length){
+        decimalWeights = (calculateWeights(poolTokens.map(token => weights.get(denomData.get(token)))))
         pastTokensPrices = (poolTokens
                            .map(token => getCurrencyPriceArray(token, poolPriceData)))
         if(pastTokensPrices.length>1){
