@@ -274,3 +274,15 @@ a:hover{
     width:90%;
   }
 }
+
+/*Configuration*/
+
+.selectablePoolList{
+  height:400px;
+  width:400px;
+  overflow-y: auto;
+  padding:1em;
+}
+.selectablePools{
+  padding:0.3em 1em;
+}

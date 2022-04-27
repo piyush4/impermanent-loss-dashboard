@@ -27,6 +27,8 @@ export function calculateHoldValue(periodReturns, decimalWeights){
 
 export function getCurrencyPriceArray(token, poolPriceData){
     const nValues = poolPriceData.get(token).length
+    const minValues = [...poolPriceData.keys()].reduce((minimumVal, token) => {        
+                    return Math.min(poolPriceData.get(token).length, minimumVal)},1000000)
     const priceData = poolPriceData.get(token)
     const pastPrices = []
     if(nValues>2){
@@ -35,7 +37,7 @@ export function getCurrencyPriceArray(token, poolPriceData){
                             priceData[nValues-31],
                             priceData[nValues-91],
                             priceData[nValues-181],
-                            priceData[0]])
+                            priceData[nValues-minValues]])
     }
     return pastPrices
 }

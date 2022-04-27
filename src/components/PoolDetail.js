@@ -68,10 +68,8 @@ function PoolDetail(){
     
     if(weights.length>1 && poolPriceData.size==poolTokens.length){
         decimalWeights = (calculateWeights(weights))
-        console.log(decimalWeights)
         pastTokensPrices = (poolTokens
                            .map(token => getCurrencyPriceArray(token, poolPriceData)))
-        console.log(pastTokensPrices)
         if(pastTokensPrices.length>1){
             const returns = []
             for(let i=0;i<pastTokensPrices[0][0].length;i++){
@@ -86,8 +84,6 @@ function PoolDetail(){
             for(let i=0;i<Object.keys(impermLoss).length;i++){
                 newImpermLoss[Object.keys(impermLoss)[i]] = (newPoolValue[i].toFixed(5)-newHoldValue[i].toFixed(5))
             }
-            console.log(newHoldValue)
-            console.log(newPoolValue)
             impermLoss = newImpermLoss
         } 
     }
