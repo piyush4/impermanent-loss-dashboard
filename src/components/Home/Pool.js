@@ -31,7 +31,6 @@ function Pool(props){
             .filter(coinDetails=>coinDetails.symbol!=='')
             .map(coinDetails =>coinDetails.symbol)
     
-    
     if(coinData!==undefined && poolWeights!==undefined){
         currencies_price_change.push(...(coinsInPool
             .map(coin => coinData.get(coin).deltaPrice)))

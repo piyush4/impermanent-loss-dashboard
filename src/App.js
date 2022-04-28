@@ -43,6 +43,7 @@ function App() {
   },[])
   
   //Get Pool weights
+  
   React.useEffect(()=>{
     if(totalPools!==0){
       fetch(poolParamsUrl(totalPools), headers)
@@ -54,7 +55,6 @@ function App() {
       }).catch(error=>console.log(error))
     }  
   },[totalPools])
-
   return (
     <div className='site-container'>
       <Header/>

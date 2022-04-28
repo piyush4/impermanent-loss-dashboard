@@ -12,20 +12,25 @@ function Home(props){
     function handleChange(event){
       setSearchState(event.target.value)
     }
-
-    const poolItems = dataKeys.map(key => {
-    return(<Pool key = {key} 
-                 poolId = {key}
-                 poolData = {data[key]}
-                 coinData = {coinData}
-                 poolWeights = {poolWeights.get(key)}
-                 searchState = {searchState.toUpperCase()}
-             />
-            )
-  })
+    let poolItems = []
+    if(poolWeights.size>0){
+      poolItems = dataKeys.map(key => {
+        return(<Pool key = {key} 
+                    poolId = {key}
+                    poolData = {data[key]}
+                    coinData = {coinData}
+                    poolWeights = {poolWeights.get(key)}
+                    searchState = {searchState.toUpperCase()}
+                />
+              )
+        })
+    } 
+    
     return (
     <div className="home">
-      <SearchMenuBar searchState={searchState}
+      <SearchMenuBar 
+                    handleClassName={'from_overview'}
+                    searchState={searchState}
                     handleChange ={handleChange}/>
       
         <div className="tableContainer">

@@ -1,28 +1,34 @@
-import React from "react"
-import { useEffect, useState } from "react"
-import { eachPoolPriceUrl, eachPoolParamsUrl, tokenChart } from "../constants/Urls"
-import { headers } from "../constants/Constants"
-import {useParams} from 'react-router-dom'
-import { calculateHoldValue, calculatePoolValue, calculateWeights, getCurrencyPriceArray, handleResponse } from "../helpers/Helpers"
-import ImpermanentLossCard from "./ImpermanentLossCard"
-import Loading from "./Loading"
+import React, { useState, useEffect } from 'react'
+import { eachPoolPriceUrl, tokenChart } from '../../constants/Urls'
+import { calcAmount, calculateWeights, 
+    calculateHoldValue, calculatePoolValue, 
+    getCurrencyPriceArray, handleResponse } from '../../helpers/Helpers'
+import ImpermanentLossCard from './ImpermanentLossCard'
+import Loading from '../Loading'
 
-function PoolDetail(){
-    const {poolId}= useParams()
+function PoolConfigComponent(props){
+    const {poolName, poolWeights} = props
+    const indexDash = poolName.indexOf('-')
+    const poolId = poolName.substring(0, indexDash)
+    console.log(poolWeights)
     const [poolTokens, setPoolTokens] = useState([])
     const [poolPriceData, setPoolPriceData] = useState(new Map())
     const [denomData, setDenomData] = useState(new Map())
-    const [weights, setWeights] = useState(new Map())
+    const weights = new Map()
     const [amountInvested, setAmountInvested] = useState(10000)
     const [currentPeriod, setCurrentPeriod] = useState("1D")
     const [currentPrices, setCurrentPrices] = useState([])
-
+    const [showOptions, setShowOptions] = useState('hidden')
     const periodMap = {"1D":0, "7D":1, "1M":2, "3M":3, "6M":4, "Max":5}
     let impermLoss = {"1D":0,"7D":0,"1M":0, "3M":0, "6M":0, "Max":0}
     let decimalWeights = []
     let pastTokensPrices = []
     const newHoldValue = []
     const newPoolValue = []
+
+    poolWeights.get(poolId).map(token => {
+                    weights.set(token.token.denom, token.weight)
+                    return token.weight})
     // Event handlers
     function handleInput(e){
         e.preventDefault()
@@ -31,8 +37,12 @@ function PoolDetail(){
     function handleSubmit(e){
         e.preventDefault()
     }
+    function handlePeriodSelect(event){
+        showOptions==='hidden'?setShowOptions('not-hidden'):setShowOptions('hidden')
+    }
     function handleClick(event){
         setCurrentPeriod(event.target.textContent)
+        showOptions==='hidden'?setShowOptions('not-hidden'):setShowOptions('hidden')
     }
     //load the data required for the page render
     useEffect(()=>{
@@ -43,13 +53,6 @@ function PoolDetail(){
                 setPoolTokens(prevPoolTokens =>[...prevPoolTokens, token.symbol]) 
                 setCurrentPrices(prevCurrentPrices =>[...prevCurrentPrices, token.price])
                 setDenomData(new Map(denomData.set(token.symbol, token.denom)))
-        })})
-        fetch(eachPoolParamsUrl(poolId),headers)
-            .then(res=>handleResponse(res))
-            .then(data=>{
-                data.pool.poolAssets.map(token => {
-                    setWeights(new Map(weights.set(token.token.denom, token.weight)))
-                    return token.weight
         })})
     },[])  
     useEffect(()=>{
@@ -100,10 +103,12 @@ function PoolDetail(){
                     handleInput = {handleInput}
                     handleSubmit = {handleSubmit}
                     handleClick = {handleClick}
+                    handlePeriodSelect = {handlePeriodSelect}
                     poolValue = {newPoolValue}
                     holdValue = {newHoldValue}
                     periodMap = {periodMap}
                     pastTokensPrices = {pastTokensPrices}
+                    showOptions = {showOptions}
             />
         )
     }else{
@@ -112,4 +117,4 @@ function PoolDetail(){
     
 }
 
-export default PoolDetail
+export default PoolConfigComponent

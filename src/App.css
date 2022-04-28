@@ -107,7 +107,7 @@ input:focus{
   width:90%;
   margin:0 auto 1em;
 }
-.searchHome{
+.from_overview{
   width:65%;
   margin:1em 0em;
   text-align: left;
@@ -115,7 +115,7 @@ input:focus{
   padding:0.5em 0.7em;
   
 }
-.searchHome::placeholder{
+.from_overview::placeholder{
   text-align: left;
 }
 /*Table*/
@@ -233,7 +233,6 @@ a, a:visited{
   text-decoration: none;
 }
 a:hover{
-  
   color:rgba(255, 255, 255, 0.8);
 }
 /*Footer*/
@@ -247,6 +246,169 @@ a:hover{
 .loading{
   text-align:center;
   color:rgba(255,255,255,0.2);
+}
+
+/*Configuration*/
+.configuration {
+  margin: 2em auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position:relative;  
+}
+
+.addPool {
+  margin: 0 auto 1em;
+  padding: 0.6em 1.5em;
+  background-color: goldenrod;
+  border: none;
+  border-radius: 0.4em;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: rgba(23, 15, 52);
+}
+.addPool:hover{
+  cursor:pointer;
+  background-color: rgba(240, 127, 21);
+}
+
+.headingList {
+  display: flex;
+  justify-items: flex-end;
+  align-items: baseline;
+  width: 100%;
+  padding: 1.2em;
+}
+
+.list-of-pool {
+  width: 90%;
+  text-align: center;
+  margin: 0em auto 0.5em;
+}
+
+.from_configuration {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.6em;
+  text-align: left;
+  margin: 0 auto 1.5em;
+}
+
+.from_configuration::placeholder {
+  text-align: left;
+}
+
+.selectablePoolList {
+  background-color: rgba(23, 15, 52);
+  padding: 0em;
+  height: 375px;
+  width: 90%;
+  max-width:450px;
+  border-radius: 0.3em;
+  margin: 0 auto;
+  overflow-y: auto;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  position:absolute;
+  top:20%;
+  right:0;
+  z-index:1;
+}
+.hidden{
+  display:none;
+}
+.sticky-part {
+  position: sticky;
+  top: 0;
+  background-color: rgba(23, 15, 52);
+}
+.closeButton:hover{
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.selectablePools {
+  width: 90%;
+  margin: 0.3em auto;
+  padding: 0.5em 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.selectablePools:hover {
+  background-color: rgba(255, 255, 255, 0.151);
+  cursor: pointer;
+}
+
+.selectedConfigurations{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.il-card-configuration{
+  display:flex;
+  position:relative;
+  flex-direction:column;
+  width:30%;
+  max-width:450px;
+  min-width:400px;
+  padding:1em;
+  border:1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 0.5em;
+  margin:2em auto;
+}
+.config-form{
+  width:90%;
+  margin:0 auto;
+}
+.config-form label{
+  font-size:1.1rem;
+  font-weight: bold;
+  margin-left:58%;
+}
+.amount-config{
+  width:100%;
+  margin:0.5em auto;
+}
+.custom-dropdown{
+  position:relative;
+  width:100%;
+}
+.selectedPeriod{
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding:0.3rem 1em;
+  width:90%;
+  text-align: right;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin:0 auto;
+  border-radius: 0.3em;
+}
+.selectedPeriod:hover{
+  cursor: pointer;
+}
+.periodSelector{
+  border:none;
+  width:100%;
+  border-radius:0.3em;
+  font-size: inherit;
+  background-color: rgba(23, 15,52);
+  color:rgba(255, 255, 255, 0.8);
+  list-style:none;
+  position:absolute;
+  left:-1em;
+  z-index: 1;
+}
+.periodSelector:hover{
+  cursor:pointer
+}
+.options{
+  border:1px solid rgba(255, 255, 255, 0.05);
+  text-align: right;
+  padding:1em;
+  
+  position:relative;
+}
+.options:hover{
+  background-color: rgba(255, 255, 255, 0.1);
 }
 /*screen greater than 650px*/
 @media (min-width:650px){
@@ -264,7 +426,7 @@ a:hover{
     margin-right: 0;
     margin-left: 1em;
   }
-  .searchHome{
+  .from_overview{
     width:40%;
     margin:1em 0em 1em 60%;
   }
@@ -275,14 +437,3 @@ a:hover{
   }
 }
 
-/*Configuration*/
-
-.selectablePoolList{
-  height:400px;
-  width:400px;
-  overflow-y: auto;
-  padding:1em;
-}
-.selectablePools{
-  padding:0.3em 1em;
-}

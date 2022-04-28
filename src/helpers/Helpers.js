@@ -45,3 +45,10 @@ export function getCurrencyPriceArray(token, poolPriceData){
 export function calcAmount(result, amountInvested){
     return ((result*amountInvested).toFixed(2))
 }
+export function hiddenTransitionStyle(predicate){
+    return {
+         opacity:predicate ==='hidden'?"0":"1",
+         transition:"all .8s",
+         visibility: predicate=='hidden'?"hidden":"visible"
+    }
+}

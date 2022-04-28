@@ -16,7 +16,7 @@ function Header(){
         </h1>
         <ul className="menu">
             <Link to='/'><li className={`${isActive==='/'?'isActive':''}`}>Overview</li></Link>
-            <Link to='configuration'><li className={`${isActive==='/configuration'?'isActive':''}`}>Configurations</li></Link>
+            <Link to='configuration'><li className={`${isActive==='/configuration'?'isActive':''}`}>Custom Dashboard</li></Link>
         </ul>
     </div>)
 }
