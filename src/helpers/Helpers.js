@@ -48,7 +48,7 @@ export function calcAmount(result, amountInvested){
 export function hiddenTransitionStyle(predicate){
     return {
          opacity:predicate ==='hidden'?"0":"1",
-         transition:"all .8s",
+         transition:"all .6s",
          visibility: predicate=='hidden'?"hidden":"visible"
     }
 }

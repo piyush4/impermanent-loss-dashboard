@@ -403,7 +403,7 @@ a:hover{
 .options{
   border:1px solid rgba(255, 255, 255, 0.05);
   text-align: right;
-  padding:1em;
+  padding:0.4em 1em;
   
   position:relative;
 }

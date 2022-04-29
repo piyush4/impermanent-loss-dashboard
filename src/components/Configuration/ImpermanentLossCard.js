@@ -1,5 +1,5 @@
 import React from "react"
-import { calcAmount } from "../../helpers/Helpers"
+import { calcAmount, hiddenTransitionStyle } from "../../helpers/Helpers"
 
 function ImpermanentLossCard(props){
     const {poolTokens, currentPeriod, amountInvested,
@@ -33,7 +33,8 @@ function ImpermanentLossCard(props){
             <p  className="selectedPeriod" 
                 onClick={handlePeriodSelect}>{currentPeriod}</p>
             <ul name="period"
-                    className={`periodSelector ${showOptions}`}>
+                    className={`periodSelector`}
+                    style= {hiddenTransitionStyle(showOptions)}>
                     {periodParas}
             </ul>
         </div>
